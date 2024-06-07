@@ -423,6 +423,7 @@ def update_credentials_course_certificate_configuration_available_date(
         f"Running task `update_credentials_course_certificate_configuration_available_date` for course {course_key} "
         f"with certificate_available_date {certificate_available_date}"
     )
+    import pdb; pdb.set_trace()
     course_key = str(course_key)
     course_modes = CourseMode.objects.filter(course_id=course_key)
     # There should only ever be one certificate relevant mode per course run
@@ -431,6 +432,7 @@ def update_credentials_course_certificate_configuration_available_date(
         if mode.slug in CourseMode.CERTIFICATE_RELEVANT_MODES or CourseMode.is_eligible_for_certificate(mode.slug)
     ]
     if len(modes) != 1:
+        import pdb; pdb.set_trace()
         LOGGER.exception(f"Either course {course_key} has no certificate mode or multiple modes. Task failed.")
         return
 
